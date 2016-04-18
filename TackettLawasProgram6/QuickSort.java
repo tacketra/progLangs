@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class QuickSort
 {
-    public static void Sort(ArrayList list)
+    public static void sort(ArrayList list)
     {
         // TODO - complete method
     }
