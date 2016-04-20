@@ -9,7 +9,7 @@ public class ExtendedIterator<T> implements Iterator<T>
     private Iterator<T> iterator;
     private ArrayList<T> list;
     
-    public int currentIndex;
+    private int currentIndex;
     
     ExtendedIterator(ArrayList<T> list)
     {
@@ -74,7 +74,7 @@ public class ExtendedIterator<T> implements Iterator<T>
             list.add(currentElement);
         }
         
-        System.out.println("firstelement: " + firstElement + ", secondElement: " + secondElement);
+        //System.out.println("firstelement: " + firstElement + ", secondElement: " + secondElement);
         
         this.populate(list);
         
@@ -122,6 +122,45 @@ public class ExtendedIterator<T> implements Iterator<T>
         }
         
         return ret;
+    }
+    
+    // similar to substring, returns a new iterator 
+    public ExtendedIterator<T> subIterator(int startIndex, int endIndex)
+    {
+        ArrayList<T> subList = new ArrayList<T>();
+        subList.add(this.setPositionTo(startIndex)); // set iterator to start index, and add that element to the subList
+        
+        while (this.currentIndex() < endIndex)
+        {
+            subList.add(this.next());
+        }
+        
+        return new ExtendedIterator<T>(subList);
+    }
+    
+    public ArrayList<T> toArray()
+    {           
+        return this.list;
+    }
+    
+    /*
+    ArrayList<T> retList = new ArrayList<T>();
+    retList.add(this.setPositionTo(0));
+
+    while (this.hasNext())
+    {
+        retList.add(this.next());
+    }
+    */
+    
+    public int length()
+    {
+        return this.list.size();
+    }
+    
+    public int currentIndex()
+    {
+        return this.currentIndex;
     }
     
     @Override

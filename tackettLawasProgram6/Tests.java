@@ -38,6 +38,7 @@ public class Tests
             System.out.println("swapping index: " + first + ", index: " + second);
             System.out.println("element at " + second + " = " + iterator.elementAt(second) + " element at " + first + " = " + iterator.elementAt(first));
         }
+        
     }
     
 }
